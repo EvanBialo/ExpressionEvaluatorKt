@@ -64,7 +64,6 @@ class ExpressionEnvironment {
                     )
                 }
             }
-            println(expr)
         }
 
         val v = expr.resolveBEDMAS()
@@ -156,7 +155,7 @@ private fun Expr.operateAt(i: Int): Expr {
     return this.slice(0..(i - 2)) + listOf(Num(v)) + this.slice((i + 2)..(this.size - 1))
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val env = ExpressionEnvironment()
 
     println("Examples:")

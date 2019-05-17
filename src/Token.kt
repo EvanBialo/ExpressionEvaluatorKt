@@ -80,7 +80,8 @@ fun String.toToken(name: Regex = "[a-zA-Z_]+".toRegex()): Token? {
     return when {
         matches(name) -> Name(this)
         matches(number) -> Num(this.toDouble())
-        get(0) in Operator.map.keys -> Operator.map[this[0]]
+        this[0] in Operator.map.keys -> Operator.map[this[0]]
+        this.trim() == "" -> null
         else -> Ch(this[0])
     }
 }
