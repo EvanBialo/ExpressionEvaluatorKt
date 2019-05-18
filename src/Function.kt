@@ -11,11 +11,3 @@ data class Function(val expr: Expr, val inputArgs: List<Name>) {
         return listOf(Ch('(')) + solution + listOf(Ch(')'))
     }
 }
-
-fun solveFun(func: Expr, names: List<Pair<Name, Expr>>): Expr {
-    var expr = listOf(Ch('(')) + func + listOf(Ch(')'))
-
-    names.forEach { expr = expr.replaceAll(it.first, listOf(Num(it.second.solve()!!))) }
-
-    return expr
-}

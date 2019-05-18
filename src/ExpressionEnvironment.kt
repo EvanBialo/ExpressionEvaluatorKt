@@ -40,6 +40,7 @@ class ExpressionEnvironment {
                     i = it.index
                     funcName = it.value
                     expectingBracket = true
+                    curSubexpr = mutableListOf()
                 } else if (it.value == Ch('(')) {
                     if (!expectingBracket) {
                         funcName = null
@@ -160,9 +161,9 @@ fun main() {
 
     println("Examples:")
     println("---------------------------------------------------------")
-    println("not(bool):bool<0|bool=0")
-    println("max(x,y):x*(x>y|x=y)+y*(y>x)")
-    println("if(bool,true,false):true*(bool>0)+false*(not(bool>0))")
+    println("not(bool): bool<0 | bool=0")
+    println("max(x, y): x*(x>y|x=y) + y*(y>x)")
+    println("if(bool, true, false): true*(bool>0) + false*(not(bool>0))")
 
     while (true) {
         try {
