@@ -1,7 +1,13 @@
+package function
+
+import replaceAll
+import solve
+import token.*
 import java.lang.IllegalArgumentException
 
-data class Function(val expr: Expr, val inputArgs: List<Name>) {
-    fun solve(args: List<Expr>): Expr {
+
+data class CustomFunction(val expr: Expr, override val inputArgs: List<Name>) : Function(inputArgs) {
+    override fun solve(args: List<Expr>): Expr {
         if (inputArgs.size != args.size) throw IllegalArgumentException("Incorrect number of arguments")
 
         val map: MutableMap<Name, Expr> = inputArgs.zip(args).toMap().toMutableMap()
