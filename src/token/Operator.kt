@@ -15,6 +15,7 @@ enum class Operator : Token {
             '>' to Gt, '=' to Equals, '<' to Lt,
             '&' to And, '|' to Or
         )
+        val regex= ("[" +map.keys.joinToString (separator = "")+"]").toRegex()
     }
 
     fun execute(a: Double, b: Double): Double {

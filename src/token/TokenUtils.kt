@@ -3,15 +3,12 @@ package token
 typealias Expr = List<Token>
 typealias MutableExpr = MutableList<Token>
 
-fun String.toToken(name: Regex = "[a-zA-Z_]+".toRegex()): Token? {
-    val number = "[0-9]+\\.?[0-9]*".toRegex()
-    return when {
-        matches(name) -> Name(this)
-        matches(number) -> Num(this.toDouble())
-        this[0] in Operator.map.keys -> Operator.map[this[0]]
-        this.trim() == "" -> null
-        else -> Ch(this[0])
-    }
+fun String.toToken(): Token? = when {
+    matches(Name.regex) -> Name(this)
+    matches(Num.regex) -> Num(this.toDouble())
+    matches(Operator.regex) -> Operator.map[this[0]]
+    this.trim() == "" -> null
+    else -> Ch(this[0])
 }
 
 fun String.tokenize(name: Regex = "[a-zA-Z_]+".toRegex()): Expr {

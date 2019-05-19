@@ -1,10 +1,10 @@
-import function.CustomFunction
+import function.CustomFormula
 import token.*
 
 @Suppress("unused")
 class ExpressionEnvironment {
     private val vars: MutableMap<String, Double> = mutableMapOf()
-    private val funcs: MutableMap<String, CustomFunction> = mutableMapOf()
+    private val funcs: MutableMap<String, CustomFormula> = mutableMapOf()
 
     fun resolve(exprRaw: String): Double? {
         var varname: String? = null
@@ -20,7 +20,7 @@ class ExpressionEnvironment {
                     .split(Ch(','))
                     .map { it[0] as Name }
 
-                funcs[funcName] = CustomFunction(expr.slice((end + 2) until expr.size), funcVar)
+                funcs[funcName] = CustomFormula(expr.slice((end + 2) until expr.size), funcVar)
                 return null
             } else {
                 // variable definition

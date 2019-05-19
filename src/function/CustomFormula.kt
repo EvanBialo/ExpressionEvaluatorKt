@@ -6,7 +6,7 @@ import token.*
 import java.lang.IllegalArgumentException
 
 
-data class CustomFunction(val expr: Expr, override val inputArgs: List<Name>) : Function(inputArgs) {
+data class CustomFormula(val expr: Expr, override val inputArgs: List<Name>) : Formula(inputArgs) {
     override fun solve(args: List<Expr>): Expr {
         if (inputArgs.size != args.size) throw IllegalArgumentException("Incorrect number of arguments")
 
